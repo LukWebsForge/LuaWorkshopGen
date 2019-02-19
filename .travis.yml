@@ -1,0 +1,7 @@
+language: go
+
+go:
+  - "1.11"
+
+install: true
+script: GO111MODULE=on go build ./...
