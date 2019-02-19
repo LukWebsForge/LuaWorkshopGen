@@ -71,13 +71,13 @@ func download(apiKey string, collectionId int) ([]WorkshopFile, error) {
 
 func writeLua(s *bufio.Writer, collectionId int, files []WorkshopFile) {
 	_, _ = s.WriteString(
-		"-- Created with workshop-lua (https://github.com/LukWebsForge/WorkshopLua)\n" +
+		"-- Created with workshop-lua (https://github.com/LukWebsForge/LuaWorkshopGen)\n" +
 			"-- List based on collection https://steamcommunity.com/sharedfiles/filedetails/?id=" + strconv.Itoa(collectionId) +
 			"\n" +
 			"\n")
 
 	for _, file := range files {
-		_, _= s.WriteString("resource.AddWorkshop(\""+strconv.Itoa(file.Id)+"\") -- "+file.Name+"\n")
+		_, _ = s.WriteString("resource.AddWorkshop(\"" + strconv.Itoa(file.Id) + "\") -- " + file.Name + "\n")
 	}
 }
 
