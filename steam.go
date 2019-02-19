@@ -10,6 +10,7 @@ import (
 	"strconv"
 )
 
+// Steam API Documentation: https://lab.xpaw.me/steam_api_documentation.html#ISteamRemoteStorage_GetCollectionDetails_v1
 const CollectionUrl string = "https://api.steampowered.com/ISteamRemoteStorage/GetCollectionDetails/v1/"
 const FileDetailsUrl string = "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/"
 
@@ -57,7 +58,7 @@ func requestFileDetails(apiKey string, fileIds []int) ([]WorkshopFile, error) {
 	data.Set("key", apiKey)
 	data.Set("itemcount", strconv.Itoa(len(fileIds)))
 	for key, fileId := range fileIds {
-		data.Set("publishedfileids[" + strconv.Itoa(key) + "]", strconv.Itoa(fileId))
+		data.Set("publishedfileids["+strconv.Itoa(key)+"]", strconv.Itoa(fileId))
 	}
 
 	response, err := requestSteam(data, FileDetailsUrl)
@@ -142,8 +143,8 @@ func parseFileDetails(stream *io.ReadCloser) ([]WorkshopFile, error) {
 		}
 
 		workFiles[key] = WorkshopFile{
-			Id:fid,
-			Name:title,
+			Id:   fid,
+			Name: title,
 		}
 	}
 
