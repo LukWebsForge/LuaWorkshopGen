@@ -17,7 +17,7 @@ func main() {
 
 	flag.StringVar(&apiKey, "api-key", "", "Your steam api key")
 	flag.IntVar(&collectionId, "collection", 0, "The workshop collection id")
-	flag.StringVar(&out, "output", "", "Your steam api key")
+	flag.StringVar(&out, "output", "", "Where the file should be stored")
 
 	flag.Parse()
 
